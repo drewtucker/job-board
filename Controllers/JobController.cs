@@ -5,15 +5,25 @@ namespace JobBoard.Controllers
     public class HomeController : Controller
     {
       [HttpGet("/")]
+      public ActionResult Index()
+      {
+        return View();
+      }
+
+      [HttpGet("/jobs/new")]
         public ActionResult Form()
         {
           return View();
         }
 
-      [HttpGet("/Jobs")]
-      public ActionResult JobPostings()
+
+      [HttpPost("/jobs")]
+      public ActionResult AddJobPosting()
       {
-        return View();
+        Contact newContact = new Contact(Request.Form["contactName"], Request.Form["contactNumber"]);
+        Job newJob = new Job(Request.Form["jobTitle"], Request.Form["describe"], newContact);
+        newJob.SaveJob();
+        return View("JobPostings", Job.AllJobs());
       }
     }
 }

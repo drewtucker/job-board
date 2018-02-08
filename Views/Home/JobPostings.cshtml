@@ -7,5 +7,16 @@
   </head>
   <body>
     <h1>Job Postings:</h1>
+    <ul>
+      @foreach(var Job in Model)
+      {
+        <li><strong>@Job.GetTitle()</strong></li>
+        <br>
+        <li><strong>Description:</strong> @Job.GetDescription()</li>
+        <li><strong>Contact Name:</strong> @Job.GetContact().GetContactName()</li>
+        <li><strong>Contact Phone Number:</strong> @Job.GetContact().GetContactNumber()</li>
+      }
+    </ul>
+    <a href="/jobs/new">Add a new Job:</a>
   </body>
 </html>

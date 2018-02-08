@@ -1,11 +1,19 @@
 using System.Collections.Generic;
 namespace JobBoard.Models
 {
-   class Job
+   public class Job
   {
     private string _title;
     private string _description;
-    private static Dictionary<string, string> _contact = new Dictionary<string, string>(){};
+    private Contact _contact;
+    private static List<Job> _jobInstances = new List<Job> {};
+
+    public Job(string title, string description, Contact contact)
+    {
+      _title = title;
+      _description = description;
+      _contact = contact;
+    }
 
     public string GetTitle()
     {
@@ -27,14 +35,20 @@ namespace JobBoard.Models
       _description = newDescription;
     }
 
-    public string GetContact()
+    public Contact GetContact()
     {
-      return _contact
+      return _contact;
     }
 
-    public void SetContact(string newContact)
+    public void SaveJob()
     {
-      _contact = newContact;
+      _jobInstances.Add(this);
     }
+
+    public static List<Job> AllJobs()
+    {
+      return _jobInstances;
+    }
+
   }
 }

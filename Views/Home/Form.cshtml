@@ -7,7 +7,7 @@
   </head>
   <body>
     <h1>Enter the details of the Job you'd like to post:</h1>
-    <form action='/jobPost'>
+    <form action='/jobs' method="post">
       <div class='form-group'>
         <label for='jobTitle'>Enter the job title:</label>
         <input id='jobTitle' name='jobTitle' class='form-control' type='text'>
@@ -26,7 +26,7 @@
         <input id='contactNumber' name='contactNumber' class='form-control' type='text'>
       </div>
       <button type='submit' class='btn'>Go!</button>
-
+    </form>
 
   </body>
 </html>
